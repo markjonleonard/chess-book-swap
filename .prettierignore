@@ -1,0 +1,6 @@
+dist
+coverage
+package-lock.json
+supabase/config.toml
+supabase/.temp
+docs

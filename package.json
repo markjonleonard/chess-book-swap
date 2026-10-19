@@ -1,0 +1,40 @@
+{
+  "name": "chess-book-swap",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --build && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "vue": "3.5.43",
+    "vue-router": "5.3.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node24": "24.0.5",
+    "@types/node": "24.19.1",
+    "@vitejs/plugin-vue": "6.0.9",
+    "@vue/eslint-config-typescript": "14.9.0",
+    "@vue/tsconfig": "0.9.1",
+    "eslint": "10.12.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-vue": "10.11.1",
+    "prettier": "3.9.9",
+    "typescript": "6.0.3",
+    "vite": "8.3.2",
+    "vitest": "4.1.11",
+    "vue-tsc": "3.3.12"
+  },
+  "engines": {
+    "node": ">=24.12.0"
+  }
+}
