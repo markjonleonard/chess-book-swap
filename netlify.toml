@@ -1,0 +1,31 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Keep in step with .nvmrc and the CI workflow.
+  NODE_VERSION = "24"
+
+# Client-side routing: any path without a matching file gets the app, which renders its own 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Phase 1 allows only this origin. Later phases add the Supabase project (connect-src, and
+    # wss:// if Realtime is used), Open Library (connect-src, plus covers.openlibrary.org in
+    # img-src if covers are shown) and Turnstile (script-src, frame-src, connect-src).
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Cross-Origin-Opener-Policy = "same-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    # Vite fingerprints everything under /assets, so it can be cached for good.
+    Cache-Control = "public, max-age=31536000, immutable"
